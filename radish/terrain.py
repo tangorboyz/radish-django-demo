@@ -19,7 +19,7 @@ def start_timer(features, marker):
 
 @after.all
 def stop_timer(features, marker):
-    elapsed = world.start_time - datetime.datetime.now()
+    elapsed = datetime.datetime.now() - world.start_time
     print("custom timer: " + str(elapsed))
 
 
