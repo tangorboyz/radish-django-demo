@@ -3,7 +3,6 @@ Feature: User SignUp  # features/signup.feature
     then user need to have an account
 
     Scenario: A user get confirmation email after registration
-Got an error creating the test database: (1007, "Can't create database 'blog_features'; database exists")
         Given I have the following data
           | username | email            | password   |
           | john     | john@example.com | studiocode |
@@ -35,5 +34,5 @@ Got an error creating the test database: (1007, "Can't create database 'blog_fea
 1 features (1 passed)
 3 scenarios (3 passed)
 15 steps (15 passed)
-Run 1509775333 finished within 7 hours
-custom timer: -1 day, 16:02:42.256208
+Run 1509775795 finished within 2 minutes
+custom timer: -1 day, 16:02:38.355098

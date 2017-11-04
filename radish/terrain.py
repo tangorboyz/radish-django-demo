@@ -15,6 +15,8 @@ BASE_URL = os.environ.get('BASE_URL', 'http://localhost:8000')
 @before.all
 def start_timer(features, marker):
     world.start_time = datetime.datetime.now()
+    warnings.filterwarnings('ignore', category=DeprecationWarning)
+    django.setup()
 
 
 @after.all
@@ -25,8 +27,6 @@ def stop_timer(features, marker):
 
 @before.each_scenario
 def set_up_scenario(scenario):
-    warnings.filterwarnings('ignore', category=DeprecationWarning)
-    django.setup()
     scenario.context.test_runner = DiscoverRunner(interactive=False, verbosity=0)
     scenario.context.test_runner.setup_test_environment()
     scenario.context.old_db_config = scenario.context.test_runner.setup_databases()
