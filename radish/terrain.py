@@ -30,7 +30,7 @@ def set_up_scenario(scenario):
     scenario.context.test_runner = DiscoverRunner(interactive=False, verbosity=0)
     scenario.context.test_runner.setup_test_environment()
     scenario.context.old_db_config = scenario.context.test_runner.setup_databases()
-    scenario.context.test_class = TestCase
+    scenario.context.test_class = LiveServerTestCase
     scenario.context.test_class.setUpClass()
     scenario.context.test_case = scenario.context.test_class()
     scenario.context.test_case._pre_setup()
