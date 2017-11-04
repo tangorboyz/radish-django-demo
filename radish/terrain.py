@@ -1,4 +1,5 @@
 import os
+import datetime
 import django
 import warnings
 from radish import before, after, world
@@ -13,6 +14,7 @@ BASE_URL = os.environ.get('BASE_URL', 'http://localhost:8000')
 
 @before.all
 def setup_django(features, marker):
+    world.start_time = datetime.datetime.now()
     warnings.filterwarnings('ignore', category=DeprecationWarning)
     django.setup()
     world.test_runner = DiscoverRunner(interactive=False, verbosity=0)
@@ -24,6 +26,8 @@ def setup_django(features, marker):
 def tear_down_django(features, marker):
     world.test_runner.teardown_databases(world.old_db_config)
     world.test_runner.teardown_test_environment()
+    elapsed_time = datetime.datetime.now() - world.start_time
+    print("custom timer: " + str(elapsed_time))
 
 
 @before.each_feature
