@@ -1,0 +1,45 @@
+Feature: User SignUp  # features/signup.feature
+    In order to comment or subscribe particular blog post
+    then user need to have an account
+
+    Scenario: A user get confirmation email after registration
+        Given I have the following data
+          | username | email            | password   |
+          | john     | john@example.com | studiocode |
+        When I go to the home page
+        And I see an option to register and click
+        And I submit my data on the registration form
+        Then I should be notified to confirm my email address
+
+    Scenario: User cannot register with username that already used
+        Given Two user with the following data
+          | username | email             | password   |
+          | john     | john@example.com  | studiocode |
+          | john     | johny@example.com | studiocode |
+        When first user go to register
+        Then the first user should be notified to confirm email address
+        And the second user go to register
+        But the second user should be notified to pick another username
+          AssertionError:
+Expected: a string containing 'A user with that username already exists'
+     but: was 'Rapid Prototype\nHome\n(current)\nContent\nPortfolio\nAbout\nLogin\nSign Up\nE-mail\nUsername\nPassword\nPassword(again)\nSign Up\nAlready have an account? Login!'
+
+
+    Scenario: User register with an email that already used
+        Given Two user with the following data
+          | username | email            | password   |
+          | john     | john@example.com | studiocode |
+          | johny    | john@example.com | studiocode |
+        When first user go to register
+        Then the first user should be notified to confirm email address
+        And the second user go to register
+        But the second user should be notified that email already exists
+          AssertionError:
+Expected: a string containing 'A user is already registered with this e-mail address.'
+     but: was 'Rapid Prototype\nHome\n(current)\nContent\nPortfolio\nAbout\nLogin\nSign Up\nE-mail\nUsername\nPassword\nPassword(again)\nSign Up\nAlready have an account? Login!'
+
+
+1 features (0 passed, 1 failed)
+3 scenarios (1 passed, 2 failed)
+15 steps (13 passed, 2 failed)
+Run 1509764739 finished within 7 hours
