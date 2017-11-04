@@ -1,0 +1,30 @@
+{% extends "../base.html" %}
+
+{% load bootstrap4 %}
+
+
+{% block title %}Sign Up{% endblock %}
+
+
+{% block bootstrap4_content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form id="form_signup" action="{% url 'account_signup' %}" method="post" role="form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button id="signup" type="submit" class="btn btn-primary">Sign Up</button>
+                {% endbuttons %}
+                <div class="form-group">
+                    <p class="text-muted text-right">Already have an account?
+                        <a href="{% url 'account_login' %}">Login!</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
