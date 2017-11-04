@@ -20,10 +20,6 @@ Feature: User SignUp  # features/signup.feature
         Then the first user should be notified to confirm email address
         And the second user go to register
         But the second user should be notified to pick another username
-          AssertionError:
-Expected: a string containing 'A user with that username already exists'
-     but: was 'Rapid Prototype\nHome\n(current)\nContent\nPortfolio\nAbout\nLogin\nSign Up\nE-mail\nUsername\nPassword\nPassword(again)\nSign Up\nAlready have an account? Login!'
-
 
     Scenario: User register with an email that already used
         Given Two user with the following data
@@ -34,12 +30,9 @@ Expected: a string containing 'A user with that username already exists'
         Then the first user should be notified to confirm email address
         And the second user go to register
         But the second user should be notified that email already exists
-          AssertionError:
-Expected: a string containing 'A user is already registered with this e-mail address.'
-     but: was 'Rapid Prototype\nHome\n(current)\nContent\nPortfolio\nAbout\nLogin\nSign Up\nE-mail\nUsername\nPassword\nPassword(again)\nSign Up\nAlready have an account? Login!'
 
-
-1 features (0 passed, 1 failed)
-3 scenarios (1 passed, 2 failed)
-15 steps (13 passed, 2 failed)
-Run 1509764739 finished within 7 hours
+1 features (1 passed)
+3 scenarios (3 passed)
+15 steps (15 passed)
+Run 1509774804 finished within 2 minutes
+custom timer: 0:02:43.089215
