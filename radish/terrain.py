@@ -3,7 +3,7 @@ import django
 import warnings
 import datetime
 from radish import before, after, world
-from django.test import TestCase
+from django.test import LiveServerTestCase
 from django.test.runner import DiscoverRunner
 from selenium import webdriver
 
