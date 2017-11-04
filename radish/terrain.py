@@ -2,7 +2,7 @@ import os
 import django
 import warnings
 from radish import before, after, world
-from django.test import TestCase
+from django.test import LiveServerTestCase
 from django.test.runner import DiscoverRunner
 from selenium import webdriver
 
@@ -28,17 +28,17 @@ def tear_down_django(features, marker):
 
 @before.each_feature
 def set_up_feature(feature):
-    world.test_class.setUpClass()
+    LiveServerTestCase.setUpClass()
 
 
 @after.each_feature
 def tear_down_feature(feature):
-    world.test_class.tearDownClass()
+    LiveServerTestCase.tearDownClass()
 
 
 @before.each_scenario
 def set_up_scenario(scenario):
-    scenario.context.test_case = world.test_class()
+    scenario.context.test_case = LiveServerTestCase()
     scenario.context.test_case._pre_setup()
     scenario.context.browser = webdriver.Chrome()
     scenario.context.base_url = BASE_URL

@@ -1,30 +1,74 @@
-{% extends "../base.html" %}
+{% extends "./base-auth.html" %}
 
 {% load bootstrap4 %}
 
 
 {% block title %}Sign Up{% endblock %}
 
-
-{% block bootstrap4_content %}
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <form id="form_signup" action="{% url 'account_signup' %}" method="post" role="form">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                {% buttons %}
-                    <button id="signup" type="submit" class="btn btn-primary">Sign Up</button>
-                {% endbuttons %}
-                <div class="form-group">
-                    <p class="text-muted text-right">Already have an account?
-                        <a href="{% url 'account_login' %}">Login!</a>
-                    </p>
-                </div>
-            </form>
-        </div>
+{% block form_error %}
+{% if form.errors %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-info" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{ error|escape }}
     </div>
-</div>
+    {% endfor %}
+{% endif %}
+{% endblock form_error %}
 
+{% block auth %}
+
+<form id="signup-form" action="{% url 'account_signup' %}" method="POST" novalidate="">
+        <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+            <label for="username">Username</label>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form.username }} 
+                    {% if form.username.errors %}
+                    {% for error in form.username.errors %}<span class="has-error">{{ error|escape }}</span>{% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="form-group {% if form.email.errors %}has-error{% endif %}">
+            <label for="email">Email</label>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form.email }} 
+                    {% if form.email.errors %}
+                    {% for error in form.email.errors %}<span class="has-error">{{ error|escape }}</span>{% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="form-group {% if form.password1.errors or form.password2.errors %}has-error{% endif %}">
+            <label for="password">Password</label>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form.password1 }}
+                    {% if form.password1.errors %}
+                    {% for error in form.password1.errors %}<span class="has-error">{{ error|escape }}</span>{% endfor %}
+                    {% endif %} 
+                </div>
+                <div class="col-sm-6">
+                    {{ form.password2 }} 
+                    {% if form.password2.errors %}
+                    {% for error in form.password2.errors %}<span class="has-error">{{ error|escape }}</span>{% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <button id="signup" type="submit" class="btn btn-block btn-primary">Sign Up</button>
+        </div>
+        <div class="form-group">
+            <p class="text-muted text-center">Already have an account?
+                <a href="{% url 'account_login' %}">Login!</a>
+            </p>
+        </div>
+        {% csrf_token %}
+    </form>
 {% endblock %}

@@ -1,0 +1,34 @@
+input,
+textarea {
+  outline: none; }
+
+.form-group .row {
+  margin-left: -10px;
+  margin-right: -10px; }
+  .form-group .row [class^='col'] {
+    padding-left: 10px;
+    padding-right: 10px; }
+
+.form-group.has-error span.has-error {
+  color: #FF4444;
+  font-size: 13px;
+  display: block !important; }
+
+.form-group.has-error .form-control-feedback {
+  color: #FF4444; }
+
+.form-group.has-warning span.has-warning {
+  color: #fe974b;
+  font-size: 13px;
+  display: block !important; }
+
+.form-group.has-warning .form-control-feedback {
+  color: #fe974b; }
+
+.form-group.has-success span.has-success {
+  color: #4bcf99;
+  font-size: 13px;
+  display: block !important; }
+
+.form-group.has-success .form-control-feedback {
+  color: #4bcf99; }
