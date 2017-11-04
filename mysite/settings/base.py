@@ -78,6 +78,8 @@ TEMPLATES = [
     },
 ]
 
+TEST_RUNNER = 'mysite.test.runner.RadishTestRunner'
+
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
@@ -86,12 +88,8 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'blog',
-        'HOST': 'localhost',
-        'PORT': '',
-        'USER': 'goat',
-        'PASSWORD': '',
     },
 }
 
