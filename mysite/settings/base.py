@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'djcelery_email',
     'bootstrap4',
-    'blog.apps.BlogConfig'
+    'blog.apps.BlogConfig',
+    'mysite'
 ]
 
 SITE_ID = 1
@@ -78,7 +79,6 @@ TEMPLATES = [
     },
 ]
 
-TEST_RUNNER = 'mysite.test.runner.RadishTestRunner'
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -119,7 +119,6 @@ ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_LOGOUT_ON_GET = True
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
