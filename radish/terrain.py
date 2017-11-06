@@ -18,7 +18,7 @@ def start_timer(features, marker):
     django.setup()
     world.test_runner = DiscoverRunner(interactive=False, verbosity=0)
     world.test_runner.setup_test_environment()
-    world.old_db_config = scenario.context.test_runner.setup_databases()
+    world.old_db_config = world.test_runner.setup_databases()
     world.live_server = LiveServerTestCase
     world.live_server.setUpClass()
 
