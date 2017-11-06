@@ -9,7 +9,6 @@ from selenium import webdriver
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings.feature')
-BASE_URL = os.environ.get('BASE_URL', 'http://localhost:8000')
 
 
 @before.all
@@ -35,7 +34,7 @@ def set_up_scenario(scenario):
     scenario.context.test_case = scenario.context.test_class()
     scenario.context.test_case._pre_setup()
     scenario.context.browser = webdriver.Chrome()
-    scenario.context.base_url = BASE_URL
+    scenario.context.base_url = scenario.context.test_class.live_server_url
 
 
 @after.each_scenario
