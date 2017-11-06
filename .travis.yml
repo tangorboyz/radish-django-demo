@@ -10,7 +10,7 @@ addons:
   chrome: stable
 
 env:
-  - DJANGO_SETTINGS_MODULE=mysite.settings.travisci
+  - DJANGO_SETTINGS_MODULE=mysite.settings.base
 
 before_install:
   - wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
@@ -29,4 +29,4 @@ before_script:
 
 script:
   - python manage.py test --noinput
-  - PYTHONPATH=1 radish features/
+  - PYTHONPATH=. radish features/
