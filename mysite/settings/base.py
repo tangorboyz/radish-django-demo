@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'djcelery_email',
     'bootstrap4',
     'blog.apps.BlogConfig'
 ]
@@ -88,10 +87,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',
-        'HOST': 'localhost',
-        'PORT': '',
-        'USER': 'goat',
-        'PASSWORD': '',
     },
 }
 
@@ -102,13 +97,8 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
-CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672/'
-EMAIL_HOST = 'smtp.googlemail.com'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = os.environ.get('MAIL_USERNAME')
-EMAIL_HOST_PASSWORD = os.environ.get('MAIL_PASSWORD')
-EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
