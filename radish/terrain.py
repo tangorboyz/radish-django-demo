@@ -18,7 +18,7 @@ def start_timer(features, marker):
     django.setup()
     world.test_runner = DiscoverRunner(interactive=False, verbosity=0)
     world.test_runner.setup_test_environment()
-    scenario.context.old_db_config = scenario.context.test_runner.setup_databases()
+    world.old_db_config = scenario.context.test_runner.setup_databases()
     world.live_server = LiveServerTestCase
     world.live_server.setUpClass()
 
@@ -26,7 +26,7 @@ def start_timer(features, marker):
 @after.all
 def stop_timer(features, marker):
     world.live_server.tearDownClass()
-    world.test_runner.teardown_databases(scenario.context.old_db_config)
+    world.test_runner.teardown_databases(world.old_db_config)
     world.test_runner.teardown_test_environment()
     elapsed = datetime.datetime.now() - world.start_time
     print("custom timer: " + str(elapsed))
