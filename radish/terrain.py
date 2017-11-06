@@ -8,7 +8,7 @@ from django.test.runner import DiscoverRunner
 from selenium import webdriver
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings.feature')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings.base')
 
 
 @before.all
