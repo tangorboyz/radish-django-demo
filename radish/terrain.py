@@ -13,12 +13,12 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings.base')
 
 @before.all
 def start_timer(features, marker):
-    world.start_time = datetime.datetime.now()
+    world.start_time = datetime.datetime.utcnow()
 
 
 @after.all
 def stop_timer(features, marker):
-    elapsed = datetime.datetime.now() - world.start_time
+    elapsed = datetime.datetime.utcnow() - world.start_time
     print("custom timer: " + str(elapsed))
 
 
