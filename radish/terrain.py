@@ -37,7 +37,7 @@ def set_up_scenario(scenario):
     scenario.context.test_case = world.live_server()
     scenario.context.test_case._pre_setup()
     scenario.context.browser = webdriver.Chrome()
-    scenario.context.base_url = world.live_server.live_server_url()
+    scenario.context.base_url = world.live_server.live_server_url
 
 
 @after.each_scenario
