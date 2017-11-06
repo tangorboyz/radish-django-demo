@@ -1,0 +1,32 @@
+language: python
+
+python:
+  - "3.6.3"
+
+services:
+  - postgresql
+
+addons:
+  chrome: stable
+
+env:
+  - DJANGO_SETTINGS_MODULE=mysite.settings.base
+
+before_install:
+  - wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
+  - mkdir chromedriver
+  - unzip chromedriver_linux64.zip -d chromedriver
+  - export PATH=$PATH:$PWD/chromedriver
+
+install:
+  - pip install -r requirements.txt
+
+before_script:
+  - createdb -E UTF-8 blog
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3 # give xvfb some time to start
+
+script:
+  - python manage.py test --noinput
+  - PYTHONPATH=. radish features/
