@@ -3,14 +3,7 @@ from .base import *
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'blog_features',
-        'HOST': 'localhost',
-        'PORT': '',
-        'USER': 'goat',
-        'PASSWORD': '',
-        'TEST': {
-            'NAME': 'blog_features'
-        }
     },
 }
