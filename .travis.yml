@@ -29,6 +29,4 @@ before_script:
 
 script:
   - python manage.py test --noinput
-  - python manage.py makemigrations
-  - python manage.py migrate
-  - python manage.py radish features/
+  - PYTHONPATH=. radish features/
